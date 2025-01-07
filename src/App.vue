@@ -45,6 +45,21 @@
               <span class="font-medium">File Encryption</span>
             </router-link>
           </div>
+
+          <div class="flex">
+            <router-link
+              to="/key-visualization"
+              class="flex items-center px-4 gap-2 transition-colors duration-300"
+              :class="
+                $route.path === '/key-visualization'
+                  ? 'text-blue-600'
+                  : 'text-gray-600 hover:text-blue-600'
+              "
+            >
+              <KeyIcon class="w-5 h-5" />
+              <span class="font-medium">Key Visualization</span>
+            </router-link>
+          </div>
         </div>
       </div>
     </nav>

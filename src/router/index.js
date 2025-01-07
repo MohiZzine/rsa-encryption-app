@@ -20,6 +20,11 @@ const router = createRouter({
       path: '/secure-messaging',
       name: 'secure-messaging',
       component: () => import('@/views/SecureMessagingView.vue')
+    },
+    {
+      path: '/key-visualization',
+      name: 'key-visualization',
+      component: () => import('@/views/KeyVisualizationView.vue')
     }
   ]
 })
