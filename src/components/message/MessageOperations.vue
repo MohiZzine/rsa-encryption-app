@@ -184,27 +184,25 @@ async function processMessage() {
   result.value = ''
 
   try {
+    // Add artificial delay for UX
     await new Promise((resolve) => setTimeout(resolve, 800))
 
     if (mode.value === 'encrypt') {
-      // Add this check for potential already encrypted messages
-      if (/^[A-Za-z0-9+/=]+$/.test(message.value.trim())) {
-        throw new Error(
-          'This message appears to be already encrypted. Please enter plain text to encrypt.',
-        )
-      }
-
-      // Rest of your encryption code...
+      // Just encrypt the message without the validation
       const encrypted = rsaService.encryptMessage(selectedKey.value.publicKey, message.value)
+
       if (!encrypted) {
         throw new Error('Encryption failed. Please try again.')
       }
+
       result.value = encrypted
     } else {
       const decrypted = rsaService.decryptMessage(selectedKey.value.privateKey, message.value)
+
       if (!decrypted) {
         throw new Error('Decryption failed. Please make sure the message is properly encrypted.')
       }
+
       result.value = decrypted
     }
   } catch (err) {
